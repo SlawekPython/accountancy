@@ -5,14 +5,14 @@ saldo_operacje = {}
 magazyn = {}
 przeglad = []
 historia = []
-slwownik = {}
+#slwownik = {}
 
 while True:
-    czynn_gosp = sys.argv[1]
-    slownik = {"zakup": nazwa_prod: cena_prod: ilosc, "saldo": wartosc: komentarz, "sprzedaz": nazwa_prod: cena_jedno_produktu_sprzed: ilosc}
-    if slownik[czynn_gosp] == "zakup"
-    #czynn_gosp = input('Podaj czynność gospodarczą ')
-    #if czynn_gosp == "zakup":
+    #czynn_gosp = sys.argv[1]
+    #slownik = {"zakup": (nazwa_prod, cena_prod, ilosc), "saldo": wartosc: komentarz, "sprzedaz": nazwa_prod: cena_jedno_produktu_sprzed: ilosc}
+    #if slownik[czynn_gosp] == "zakup"
+    czynn_gosp = input('Podaj czynność gospodarczą ')
+    if czynn_gosp == "zakup":
         nazwa_prod = input('Podaj nazwę produktu ')
         cena_prod = int(input('Podaj cenę produktu '))
         ilosc = int(input('Podaj kupowaną ilość '))
@@ -70,3 +70,16 @@ while True:
         if czynn_gosp not in ("zakup", "saldo", "sprzedaz"):
             print("Błedne działanie, dozwolone tylko zakup, sprzedaż lub saldo")
             break
+
+czynn_gosp = sys.argv[1]
+if czynn_gosp == "saldo":
+    wartosc = int(sys.argv[2])
+    if saldo + wartosc < 0:
+        print('Debet na koncie')
+    else:
+        saldo = saldo + wartosc
+        komentarz = sys.argv[3]
+        saldo_operacje[komentarz] = wartosc
+        historia.append((czynn_gosp, wartosc, komentarz))
+        print(saldo_operacje, saldo)
+elif:

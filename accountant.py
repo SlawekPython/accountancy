@@ -115,7 +115,23 @@ elif czynn_gosp == "sprzedaz":
     historia.append((czynn_gosp, nazwa_prod, cena_jedno_produktu_sprzed, ilosc))
     print('Saldo konta {}\n'.format(saldo))
 
-"""elif czynn_gosp == "stop":
+elif czynn_gosp == "konto":
+    print(saldo)
+
+elif czynn_gosp == "magazyn":
+    for nazwa_prod in sys.argv[2:]:
+        stan = 0
+        if nazwa_prod in magazyn:
+            stan = magazyn[nazwa_prod]
+        print("{}: {}".format(nazwa_prod, stan))
+
+elif czynn_gosp == "przeglad":
+    for wiersz in historia[int(sys.argv[2]):int(sys.argv[3])+1]:
+        for linia in wiersz:
+            print(linia)
+        #print(wiersz)
+    #print(historia[int(sys.argv[2]):int(sys.argv[3])+1])
+
+elif czynn_gosp == "stop":
     print('Koniec')
     print(historia)
-    break"""

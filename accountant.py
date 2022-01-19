@@ -7,11 +7,11 @@ przeglad = []
 historia = []
 
 while True:
-    czynn_gosp = input('Podaj czynn. gosp: ')
+    czynn_gosp = input()
     if czynn_gosp == "zakup":
-        nazwa_prod = input('Podaj nazwę produktu: ')
-        cena_prod = int(input('Podaj cenę: '))
-        ilosc = int(input('Podaj ilość: '))
+        nazwa_prod = input()
+        cena_prod = int(input())
+        ilosc = int(input())
         if ilosc < 0:
             print("Nieprawidłowa ilość.")
             continue
@@ -22,32 +22,32 @@ while True:
         historia.append((czynn_gosp, nazwa_prod, cena_prod, ilosc))
         if nazwa_prod in magazyn:
             magazyn[nazwa_prod] += ilosc
-            print('Produkty w magazynie {}'.format(magazyn))
+            #print('Produkty w magazynie {}'.format(magazyn))
         else:
             magazyn[nazwa_prod] = ilosc
-            print('Produkty w magazynie {}'.format(magazyn))
+            #print('Produkty w magazynie {}'.format(magazyn))
 
     elif czynn_gosp == "saldo":
-        wartosc = int(input('Podaj wartość: '))
+        wartosc = int(input())
         if saldo + wartosc < 0:
             print('Debet na koncie')
         else:
             saldo = saldo + wartosc
-            komentarz = input('Podaj komentarz: ')
+            komentarz = input()
             saldo_operacje[komentarz] = wartosc
             historia.append((czynn_gosp, wartosc, komentarz))
-            print(saldo_operacje, saldo)
+            #print(saldo_operacje, saldo)
 
     elif czynn_gosp == "sprzedaz":
-        nazwa_prod = input('Podaj nazwę produktu: ')
+        nazwa_prod = input()
         if nazwa_prod not in magazyn:
             print('Brak produktu w magazynie {}'.format(magazyn))
             continue
-        cena_jedno_produktu_sprzed = int(input('Podaj cenę jdn: '))
+        cena_jedno_produktu_sprzed = int(input())
         if cena_jedno_produktu_sprzed < 0:
             print('Błąd, cena mniejsza od zera\n')
             continue
-        ilosc = int(input('Podaj ilość: '))
+        ilosc = int(input())
         if ilosc < 0:
             print('Niesłaściwa ilość \n')
             continue
@@ -57,11 +57,13 @@ while True:
         saldo += cena_jedno_produktu_sprzed * ilosc
         magazyn[nazwa_prod] -= ilosc
         historia.append((czynn_gosp, nazwa_prod, cena_jedno_produktu_sprzed, ilosc))
-        print('Saldo konta {}\n'.format(saldo))
+        #print('Saldo konta {}\n'.format(saldo))
 
     elif czynn_gosp == "stop":
-        print('Koniec')
-        print(historia)
+        for wiersz in historia:
+            for linia in wiersz:
+                print(linia)
+        print(f"Stan konta: ", saldo)
         break
 
     else:
@@ -134,4 +136,4 @@ elif czynn_gosp == "przeglad":
 
 elif czynn_gosp == "stop":
     print('Koniec')
-    print(historia)
+    #print(historia)

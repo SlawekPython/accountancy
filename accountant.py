@@ -1,7 +1,7 @@
 import sys
 
 saldo = 0
-saldo_operacje = {}
+#saldo_operacje = {}
 magazyn = {}
 przeglad = []
 historia = []
@@ -34,7 +34,7 @@ while True:
         else:
             saldo = saldo + wartosc
             komentarz = input()
-            saldo_operacje[komentarz] = wartosc
+            #saldo_operacje[komentarz] = wartosc
             historia.append((czynn_gosp, wartosc, komentarz))
             #print(saldo_operacje, saldo)
 
@@ -137,3 +137,7 @@ elif czynn_gosp == "przeglad":
 elif czynn_gosp == "stop":
     print('Koniec')
     #print(historia)
+
+else:
+    if czynn_gosp not in ("zakup", "saldo", "sprzedaz"):
+        print("Błedne działanie, dozwolone tylko zakup, sprzedaż lub saldo")
